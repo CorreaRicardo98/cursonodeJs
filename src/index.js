@@ -1,16 +1,21 @@
-
-const { info, error } = require("./modules/my-log");
-const { countries } = require("countries-list");
-const express = require("express");
+const express = require('express');
+const countries = require('countries-list');
 
 const app = express();
 
-app.get('/',function(request,response){
-  response.status(200).send("hola");
+app.get('/', (request, response) => {
+  response.status(200).send('hola');
 });
 
-app.get('*',function(request,response){
-  response.status(404).send("Page Not Found");
+app.get('/country', (request, response) => {
+  const { lang } = request.query;
+  // eslint-disable-next-line no-console
+  console.log(lang);
+  response.json(countries[request.query.lang]);
+});
+
+app.get('*', (request, response) => {
+  response.status(404).send('Page Not Found');
 });
 
 // var server = http.createServer(function (request, response) {
@@ -49,8 +54,7 @@ app.get('*',function(request,response){
 //   }
 // });
 
-app.listen(5000,function(){
-  console.log("running on http://127.0.0.1:5000");
-
+app.listen(8000, () => {
+  // eslint-disable-next-line no-console
+  console.log('running on http://127.0.0.1:8000');
 });
-
