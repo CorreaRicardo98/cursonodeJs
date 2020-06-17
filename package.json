@@ -11,6 +11,7 @@
   "author": "ricardo correa bautista",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "countries-list": "^2.5.4",
     "express": "^4.17.1"
   },
